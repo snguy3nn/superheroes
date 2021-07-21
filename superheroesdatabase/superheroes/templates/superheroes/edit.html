@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1 class="text-center">Edit {{hero.name}}</h1>
+    <div class="row">
+        <div class="col-3"></div>
+        <form action="{% url 'superheroes:edit_superhero' hero.id %}" method="post" class="col-6">
+            {% csrf_token %}
+            <label class="form-label">Name:</label>
+            <input type="text" maxlength="50" name="name" id="name" value = "{{hero.name}}" class="form-control"><br>
+            <label class="form-label">Alter Ego:</label>
+            <input type="text" maxlength="50" name="alter_ego" id="alter_ego" value = "{{hero.alter_ego}}"
+                   class="form-control"><br>
+            <label class="form-label">Primary Ability:</label>
+            <input type="text" maxlength="50" name="primary_ability" id="primary_ability"
+                                    value = "{{hero.primary_ability}}" class="form-control"><br>
+            <label class="form-label">Secondary Ability:</label>
+            <input type="text" maxlength="50" name="secondary_ability" id="secondary_ability"
+                                      value = "{{hero.secondary_ability}}" class="form-control"><br>
+            <label class="form-label">Catchphrase:</label>
+            <input type="text" maxlength="50" name="catchphrase" id="catchphrase" value = "{{hero.catchphrase}}"
+                   class="form-control"><br>
+            <div class="row justify-content-center">
+                <div class="col-md"></div>
+                <div class="col-md p-3 d-flex justify-content-center">
+                    <input type="submit" value="Submit!" class="btn btn-primary">
+                </div>
+                <div class="col-md"></div>
+                <div class="col-md p-3 d-flex justify-content-center">
+                    <a href="{% url 'superheroes:index' %}" class="btn btn-danger">Cancel</a>
+                </div>
+                <div class="col-md"></div>
+            </div>
+        </form>
+        <div class="col-3"></div>
+    </div>
+</body>
+</html>
