@@ -35,13 +35,6 @@ def create(request):
         return render(request, 'superheroes/create.html')
 
 
-def delete(request, id):
-    hero = Superhero.objects.get(id=id)
-    hero.delete()
-    return HttpResponseRedirect(reverse('superheroes:index'))
-    pass
-
-
 def edit(request, id):
     hero = Superhero.objects.get(id=id)
     context = {
@@ -57,4 +50,11 @@ def edit(request, id):
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
         return render(request, 'superheroes/edit.html', context)
+    pass
+
+
+def delete(request, id):
+    hero = Superhero.objects.get(id=id)
+    hero.delete()
+    return HttpResponseRedirect(reverse('superheroes:index'))
     pass
